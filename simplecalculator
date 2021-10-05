@@ -1,0 +1,73 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Oct  3 18:59:11 2021
+
+@author: MISHA RAVI
+"""
+
+from tkinter import * 
+from functools import partial
+
+root= Tk()
+
+root.geometry("350x200")
+
+root.title("Calculator")
+
+
+def AddNum(X,Y):
+    A = X.get()
+    B = Y.get()
+    C= int(A)+int(B)
+    print("Sum =",C)
+    return 
+
+def diff(X,Y):
+    A = X.get()
+    B = Y.get()
+    C= int(A)-int(B)
+    print("Difference=",C)
+    return 
+
+def mult(X,Y):
+    A = X.get()
+    B = Y.get()
+    C= int(A)*int(B)
+    print("Product=",C)
+    return 
+
+def div(X,Y):
+    A = X.get()
+    B = Y.get()
+    C= int(A)/int(B)
+    print("Quotient=",C)
+    return 
+
+X = StringVar()
+Y = StringVar()
+
+
+label1 = Label(root, text="Enter first number =").pack()
+
+
+entr1 = Entry(root,textvariable=X).pack()
+
+label2 = Label(root, text="Enter Second number =").pack()
+
+
+entr2 = Entry(root,textvariable=Y).pack()
+
+
+AddNum= partial(AddNum, X,Y)
+diff= partial(diff, X,Y)
+mult= partial(mult, X,Y)
+div= partial(div, X,Y)
+
+
+bt1 = Button(root, text="Add", command = AddNum).pack()
+bt2 = Button(root, text="Subract", command = diff).pack()
+bt3 = Button(root, text="product", command = mult).pack()
+bt4 = Button(root, text="Devide", command = div).pack()
+
+
+root.mainloop()
